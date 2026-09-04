@@ -3,6 +3,7 @@ import './App.css';
 import CompletionBar from './CompletionBar';
 import TaskInput from './TaskInput';
 import TaskList from './TaskList';
+import WeeklyTaskGraph from './WeeklyTaskGraph';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -14,6 +15,9 @@ function App() {
   const toggleComplete = (index) => {
     const updatedTasks = [...tasks];
     updatedTasks[index].completed = !updatedTasks[index].completed;
+    updatedTasks[index].completedAt = updatedTasks[index].completed
+      ? new Date().toISOString()
+      : null;
     setTasks(updatedTasks);
   };
 
@@ -25,6 +29,7 @@ function App() {
       <CompletionBar completed={completedCount} total={tasks.length} />
       <TaskInput onAddTask={addTask} />
       <TaskList tasks={tasks} onToggleComplete={toggleComplete} />
+      <WeeklyTaskGraph tasks={tasks} />
     </div>
   );
 }
