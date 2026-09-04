@@ -4,6 +4,7 @@ import CompletionBar from './CompletionBar';
 import TaskInput from './TaskInput';
 import TaskList from './TaskList';
 import WeeklyTaskGraph from './WeeklyTaskGraph';
+import CompletedHistory from './CompletedHistory';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -30,6 +31,7 @@ function App() {
       <TaskInput onAddTask={addTask} />
       <TaskList tasks={tasks} onToggleComplete={toggleComplete} />
       <WeeklyTaskGraph tasks={tasks} />
+      <CompletedHistory tasks={tasks} />
     </div>
   );
 }
